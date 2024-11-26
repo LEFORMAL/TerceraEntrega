@@ -1,0 +1,32 @@
+<ion-header class="custom-header" [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="volver()">
+        <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Lista de alumnos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Mostrar mensaje si no hay alumnos inscritos -->
+  <div *ngIf="alumnos.length === 0" class="no-alumnos">
+    <p>No hay alumnos inscritos en este ramo.</p>
+  </div>
+
+  <!-- Lista de alumnos inscritos -->
+  <ion-list *ngIf="alumnos.length > 0">
+    <ion-item *ngFor="let alumno of alumnos">
+      <ion-label>
+        <h2>Nombre Alumno: {{ alumno.nombre }}</h2>
+        <h2>RUT: {{ alumno.rut }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Botón para escanear QR -->
+  <ion-button expand="full" color="primary" (click)="escanearQR()">
+    Escanear QR
+  </ion-button>
+</ion-content>

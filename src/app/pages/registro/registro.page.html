@@ -1,0 +1,135 @@
+<ion-header class="custom-header" [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <!-- Botón de retroceso -->
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="custom-title">Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Formulario de Registro</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Campo: Nombre -->
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input type="text" formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('nombre')?.hasError('required') && getFormControl('nombre')?.touched"
+        >
+          El nombre es obligatorio.
+        </ion-note>
+
+        <!-- Campo: RUT -->
+        <ion-item>
+          <ion-label position="stacked">RUT</ion-label>
+          <ion-input type="text" formControlName="rut"></ion-input>
+        </ion-item>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('rut')?.hasError('invalidRUT') && getFormControl('rut')?.touched"
+        >
+          El RUT debe tener el formato 12345678-9 o 12345678-k.
+        </ion-note>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('rut')?.hasError('required') && getFormControl('rut')?.touched"
+        >
+          El RUT es obligatorio.
+        </ion-note>
+
+        <!-- Campo: Fecha de Nacimiento -->
+        <ion-item>
+          <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+          <ion-input type="date" formControlName="fechaNacimiento"></ion-input>
+        </ion-item>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('fechaNacimiento')?.hasError('required') && getFormControl('fechaNacimiento')?.touched"
+        >
+          La fecha de nacimiento es obligatoria.
+        </ion-note>
+
+        <!-- Campo: Dirección -->
+        <ion-item>
+          <ion-label position="stacked">Dirección</ion-label>
+          <ion-input type="text" formControlName="direccion"></ion-input>
+        </ion-item>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('direccion')?.hasError('required') && getFormControl('direccion')?.touched"
+        >
+          La dirección es obligatoria.
+        </ion-note>
+
+        <!-- Campo: Correo Electrónico -->
+        <ion-item>
+          <ion-label position="stacked">Correo Electrónico</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('email')?.hasError('email') && getFormControl('email')?.touched"
+        >
+          El correo no es válido.
+        </ion-note>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('email')?.hasError('required') && getFormControl('email')?.touched"
+        >
+          El correo es obligatorio.
+        </ion-note>
+
+        <!-- Campo: Contraseña -->
+        <ion-item>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('password')?.hasError('minlength') && getFormControl('password')?.touched"
+        >
+          La contraseña debe tener al menos 6 caracteres.
+        </ion-note>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('password')?.hasError('required') && getFormControl('password')?.touched"
+        >
+          La contraseña es obligatoria.
+        </ion-note>
+
+        <!-- Campo: Confirmar Contraseña -->
+        <ion-item>
+          <ion-label position="stacked">Confirmar Contraseña</ion-label>
+          <ion-input type="password" formControlName="confirmPassword"></ion-input>
+        </ion-item>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('confirmPassword')?.hasError('notMatching') && getFormControl('confirmPassword')?.touched"
+        >
+          Las contraseñas no coinciden.
+        </ion-note>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('confirmPassword')?.hasError('required') && getFormControl('confirmPassword')?.touched"
+        >
+          La confirmación de contraseña es obligatoria.
+        </ion-note>
+
+        <!-- Botón: Registrar -->
+        <div style="text-align: center; margin-top: 20px;">
+          <ion-button expand="block" type="submit" color="secondary" [disabled]="registerForm.invalid">
+            Registrar
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

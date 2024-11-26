@@ -1,0 +1,66 @@
+<ion-header class="custom-header" [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="start" name="menu-outline" size="large" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="custom-title">
+      Añadir Ramos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="ramoForm" (ngSubmit)="onAddRamo()">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Registrar Nuevo Ramo</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Campo: Nombre del Ramo -->
+        <ion-item>
+          <ion-label position="stacked">Nombre del Ramo</ion-label>
+          <ion-input type="text" formControlName="nombreRamo"></ion-input>
+        </ion-item>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('nombreRamo')?.hasError('required') && getFormControl('nombreRamo')?.touched"
+        >
+          El nombre del ramo es obligatorio.
+        </ion-note>
+
+        <!-- Campo: Sección -->
+        <ion-item>
+          <ion-label position="stacked">Sección</ion-label>
+          <ion-input type="text" formControlName="seccion"></ion-input>
+        </ion-item>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('seccion')?.hasError('required') && getFormControl('seccion')?.touched"
+        >
+          La sección es obligatoria.
+        </ion-note>
+
+        <!-- Campo: Sede -->
+        <ion-item>
+          <ion-label position="stacked">Sede</ion-label>
+          <ion-input type="text" formControlName="sede"></ion-input>
+        </ion-item>
+        <ion-note
+          color="danger"
+          *ngIf="getFormControl('sede')?.hasError('required') && getFormControl('sede')?.touched"
+        >
+          La sede es obligatoria.
+        </ion-note>
+
+        <!-- Botón: Añadir -->
+        <div style="text-align: center; margin-top: 20px;">
+          <ion-button expand="block" type="submit" color="secondary" [disabled]="ramoForm.invalid">
+            Añadir Ramo
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

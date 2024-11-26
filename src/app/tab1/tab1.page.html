@@ -1,0 +1,94 @@
+<ion-header class="custom-header" [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="start" name="menu-outline" size="large" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="custom-title">Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Perfil del Profesor -->
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Avatar" />
+    </ion-avatar>
+    <ion-label>
+      <ion-button fill="clear" (click)="verPerfil()" class="name">
+        <h2>{{ usuario.nombre }}</h2>
+    </ion-button>
+    <p>{{ usuario.rut }}</p>
+    <p>Correo: {{ usuario.email }}</p>
+    </ion-label>
+  </ion-item>
+
+  <!-- Asistencia -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Asistencia por Ramo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let ramo of ramos">
+          <ion-label>
+            <h2>{{ ramo.nombreRamo }}</h2>
+            <p>Sección: {{ ramo.seccion }}</p>
+            <p>Sede: {{ ramo.sede }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <!-- Mensaje si no hay ramos -->
+      <div *ngIf="ramos.length === 0" style="text-align: center; margin-top: 20px;">
+        <p>Aún no hay ramos añadidos.</p>
+        <ion-button (click)="irAAgregarRamo()" color="secondary">Añadir Ramos</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Tareas Pendientes -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Tareas Pendientes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let tarea of tareas">
+          <ion-label>
+            <h3>{{ tarea.nombre }}</h3>
+            <p>Fecha de Tarea: {{ tarea.fecha }}</p>
+          </ion-label>
+          <ion-checkbox
+            slot="end"
+            [(ngModel)]="tarea.completada"
+            (ionChange)="tareaCompletada(tarea)"
+          ></ion-checkbox>
+        </ion-item>
+      </ion-list>
+
+      <!-- Campo para nueva tarea -->
+      <ion-item>
+        <ion-input [(ngModel)]="nuevaTareaNombre" placeholder="Nombre de la nueva tarea"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="nuevaTareaFecha" type="date"></ion-input>
+      </ion-item>
+      <ion-button (click)="agregarTarea()" class="btn" color="secondary">Agregar</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <!--Mensajes Recientes -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Recordatorios</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let mensaje of displayedMessages">
+          <ion-label>{{ mensaje }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

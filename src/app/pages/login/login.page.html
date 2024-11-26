@@ -1,0 +1,64 @@
+<ion-header [translucent]="true"></ion-header>
+
+<ion-content>
+  <div class="page-container">
+    <ion-card>
+      <!-- Imagen del logo -->
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/2560px-Logo_DuocUC.svg.png"
+        alt="Logo"
+      />
+
+      <ion-card-header>
+        <ion-card-title>Iniciar Sesión</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <!-- Campo de correo -->
+          <ion-item>
+            <ion-label position="stacked">Correo Electrónico</ion-label>
+            <ion-input type="email" formControlName="email" placeholder="Ingrese su correo"></ion-input>
+          </ion-item>
+          <ion-note
+            color="danger"
+            *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched"
+          >
+            El correo es obligatorio.
+          </ion-note>
+          <ion-note
+            color="danger"
+            *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched"
+          >
+            Ingrese un correo válido.
+          </ion-note>
+
+          <!-- Campo de contraseña -->
+          <ion-item>
+            <ion-label position="stacked">Contraseña</ion-label>
+            <ion-input type="password" formControlName="password" placeholder="Ingrese su contraseña"></ion-input>
+          </ion-item>
+          <ion-note
+            color="danger"
+            *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched"
+          >
+            La contraseña es obligatoria.
+          </ion-note>
+
+          <!-- Botón de login -->
+          <div style="text-align: center; margin-top: 20px;">
+            <ion-button expand="block" type="submit" color="secondary" [disabled]="loginForm.invalid">
+              Iniciar Sesión
+            </ion-button>
+          </div>
+        </form>
+
+        <!-- Enlaces adicionales -->
+        <div style="text-align: center; margin-top: 10px;">
+          <p class="link" (click)="registro()">¡Regístrate!</p>
+          <p class="link" (click)="recuperar()">¿Olvidaste tu contraseña?</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

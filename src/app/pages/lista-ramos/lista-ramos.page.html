@@ -1,0 +1,39 @@
+<ion-header class="custom-header" [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="start" name="menu-outline" size="large" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="custom-title">Lista de Ramos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Mostrar mensaje si no hay ramos -->
+  <div *ngIf="ramos.length === 0" class="no-ramos">
+    <p>No tienes ramos añadidos.</p>
+    <p>Datos sin procesar: {{ ramos | json }}</p>
+    <ion-button expand="full" color="primary" (click)="irAAgregarRamos()">
+      Agregar Ramos
+    </ion-button>
+  </div>
+
+  <!-- Mostrar lista de ramos -->
+  <ion-list *ngIf="ramos.length > 0">
+    <ion-item *ngFor="let ramo of ramos">
+      <ion-label>
+        <h2>{{ ramo.nombreRamo }}</h2>
+        <p>Sección: {{ ramo.seccion }}</p>
+        <p>Sede: {{ ramo.sede }}</p>
+      </ion-label>
+      <ion-button fill="outline" slot="end" color="secondary" (click)="irAlAlumno(ramo.id)">
+        Ver Alumnos
+      </ion-button>
+      <ion-button fill="outline" slot="end" color="secondary" (click)="irAlEscaner(ramo.id)">
+        Escanear QR
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+

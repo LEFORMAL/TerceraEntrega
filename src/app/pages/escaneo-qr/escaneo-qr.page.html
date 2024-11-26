@@ -1,0 +1,31 @@
+<ion-header class="custom-header" [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="volver()">
+        <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Escanear QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Escáner QR -->
+  <zxing-scanner
+    [formats]="[BarcodeFormat.QR_CODE]"
+    (scanSuccess)="onCodeScanned($event)"
+  ></zxing-scanner>
+
+  <!-- Mostrar datos escaneados -->
+  <ion-card *ngIf="qrData">
+    <ion-card-header>
+      <ion-card-title>Datos Escaneados</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Alumno RUT:</strong> {{ qrData.alumnoRut }}</p>
+      <p><strong>Ramo ID:</strong> {{ qrData.ramoId }}</p>
+      <p><strong>Fecha:</strong> {{ qrData.timestamp }}</p>
+    </ion-card-content>
+    <ion-button expand="block" (click)="registrarAsistencia()">Registrar Asistencia</ion-button>
+  </ion-card>
+</ion-content>
