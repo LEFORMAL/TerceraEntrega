@@ -1,0 +1,25 @@
+<ion-header class="custom-header" [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <!-- Botón de retroceso -->
+      <ion-back-button defaultHref="/tab2"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="custom-title">Registro de Alumno</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="qr-container" *ngIf="qrData">
+    <h2>Ramo: {{ ramo.nombreRamo }}</h2>
+    <h3>Sección: {{ ramo.seccion }}</h3>
+    <h3>Sede: {{ ramo.sede }}</h3>
+
+    <!-- QR Code -->
+    <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+
+  <!-- Spinner de carga -->
+  <ion-spinner *ngIf="!qrData"></ion-spinner>
+
+  <ion-button expand="block" color="primary" (click)="volver()">Volver</ion-button>
+</ion-content>

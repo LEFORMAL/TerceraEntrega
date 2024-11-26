@@ -1,0 +1,33 @@
+<ion-header class="custom-header" [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <!-- Botón de retroceso -->
+      <ion-back-button defaultHref="/tab2"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="custom-title">Registro de Alumno</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!isLoading; else loading">
+  <ion-list>
+    <ion-item *ngFor="let ramo of ramos">
+      <ion-label>
+        <h2>{{ ramo.nombreRamo }}</h2>
+        <p>Sección: {{ ramo.seccion }}</p>
+        <p>Sede: {{ ramo.sede }}</p>
+        <p>Profesor RUT: {{ ramo.profesorRut }}</p>
+      </ion-label>
+      <ion-button (click)="inscribirseEnRamo(ramo)" color="secondary">Inscribirse</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje si no hay ramos disponibles -->
+  <div *ngIf="ramos.length === 0" style="text-align: center; margin-top: 20px;">
+    <p>No hay ramos disponibles para inscribirse.</p>
+  </div>
+</ion-content>
+
+<ng-template #loading>
+  <ion-spinner name="crescent"></ion-spinner>
+  <p>Cargando ramos...</p>
+</ng-template>

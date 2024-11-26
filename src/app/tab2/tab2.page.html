@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Ramos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!isLoading; else loading">
+  <ion-list>
+    <ion-item *ngFor="let ramo of ramos">
+      <ion-label>
+        <h2>{{ ramo.nombreRamo }}</h2>
+        <p>Sección: {{ ramo.seccion }}</p>
+        <p>Sede: {{ ramo.sede }}</p>
+      </ion-label>
+      <ion-button slot="end" (click)="irAGenerarQR(ramo)" color="primary">
+        Generar QR
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje si no hay ramos -->
+  <div *ngIf="ramos.length === 0" style="text-align: center; margin-top: 20px;">
+    <p>Aún no tienes ramos.</p>
+    <ion-button (click)="irARegistrarRamo()" color="secondary">
+      Registrar Ramo
+    </ion-button>
+  </div>
+</ion-content>
+
+<ng-template #loading>
+  <ion-spinner name="crescent"></ion-spinner>
+  <p>Cargando ramos...</p>
+</ng-template>

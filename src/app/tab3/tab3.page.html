@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!isLoading; else loading">
+  <form [formGroup]="profileForm">
+    <ion-item>
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">RUT</ion-label>
+      <ion-input formControlName="rut"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input formControlName="email" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Dirección</ion-label>
+      <ion-input formControlName="direccion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+      <ion-input formControlName="fechaNacimiento" type="date"></ion-input>
+    </ion-item>
+    <ion-button expand="block" (click)="saveProfile()">Guardar Cambios</ion-button>
+  </form>
+</ion-content>
+
+<ng-template #loading>
+  <ion-spinner name="crescent"></ion-spinner>
+  <p>Cargando perfil...</p>
+</ng-template>

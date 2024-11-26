@@ -1,0 +1,56 @@
+ion-item {
+    --inner-padding-start: 0; /* Ajusta el padding interno si es necesario */
+    margin-bottom: 15px; /* Espacio entre cada item */
+  }
+  
+  ion-label {
+    font-weight: bold; /* Hace que la etiqueta sea más destacada */
+    margin-bottom: 8px; /* Espacio debajo de la etiqueta */
+  }
+  
+  ion-input {
+    margin-top: 8px; /* Ajusta el espacio entre la etiqueta y el campo */
+  }
+  
+  ion-button {
+    display: block;
+    margin: 20px auto; /* Centra el botón horizontalmente */
+    width: 100%; /* Hace que el botón use el ancho completo del contenedor */
+    max-width: 300px; /* Limita el ancho máximo del botón */
+  }
+  
+  .ion-card-content {
+    padding: 20px; /* Añade espacio interno a la tarjeta */
+  }
+  
+  .ion-card-header {
+    margin-bottom: 20px; /* Espacio debajo del encabezado de la tarjeta */
+  }
+  
+  .ion-card-title {
+    font-size: 1.5rem; /* Tamaño de fuente del título de la tarjeta */
+  }
+  
+  ion-button.btn {
+    margin-top: 10px; /* Espacio superior adicional para los botones */
+  }
+  
+  form {
+    padding: 20px; /* Espacio interno del formulario */
+  }
+  
+  ion-card {
+    margin: 10px; /* Espacio externo para la tarjeta */
+  }
+  .custom-header {
+    --background: rgb(255, 217, 0); /* Color de fondo amarillo */
+  }
+  
+  .custom-toolbar {
+    --background: rgb(255, 217, 0); /* Color de fondo amarillo para el toolbar */
+  }
+  
+  .custom-title {
+    color: black; /* Color de texto negro para el título */
+  }
+  

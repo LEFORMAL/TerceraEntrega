@@ -1,0 +1,54 @@
+/* Estilo del contenedor principal para centrar la tarjeta */
+.page-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Altura completa de la ventana de visualización */
+    position: relative;
+  }
+  
+  /* Estilo para la tarjeta */
+  ion-card {
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo blanco semitransparente */
+    border: none; /* Sin borde */
+    box-shadow: none; /* Sin sombra */
+    border-radius: 12px; /* Bordes redondeados */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque de fondo */
+    overflow: hidden; /* Asegura que el contenido no sobresalga */
+    position: absolute; /* Posicionamiento absoluto para colocar la tarjeta en el segundo cuarto */
+    top: 25%; /* Desplazar hacia abajo 25% de la altura de la ventana */
+    width: 90%; /* Ajusta el ancho de la tarjeta según sea necesario */
+    max-width: 600px; /* Tamaño máximo de la tarjeta */
+    box-sizing: border-box; /* Incluye el padding y border en el tamaño total */
+  }
+  
+  /* Estilo para el contenido de la tarjeta */
+  ion-card-header, ion-card-content {
+    color: #fff; /* Color del texto blanco para contraste con fondo transparente */
+  }
+  
+  /* Centra el título de la tarjeta */
+  ion-card-header {
+    text-align: center;
+  }
+  
+  ion-button {
+    --background: rgba(0, 0, 0, 0.3); /* Fondo del botón semitransparente */
+    --color: white; /* Color del texto del botón blanco */
+    border-radius: 5px; /* Bordes redondeados del botón */
+  }
+ 
+  
+  .link {
+    color: blue; /* Color del texto en azul */
+    text-decoration: underline; /* Subrayar el texto */
+    text-align: center; /* Centra el texto debajo de la tarjeta */
+    margin-top: 20px; /* Espacio entre la tarjeta y el texto */
+  }
+  ion-button.btn {
+    display: block;
+    margin: 20px auto;
+    width: auto;
+    max-width: 200px;
+  }
+  
